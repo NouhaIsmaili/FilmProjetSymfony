@@ -1,0 +1,11 @@
+
+{{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+    <div class="mb-3">
+        {{ form_widget(form) }}
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary" style="background-color: #6cb2eb; border-color: #6cb2eb;">
+            {{ button_label|default('Save') }}
+        </button>
+    </div>
+{{ form_end(form) }}

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Film Details{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12">
+            <div class="card shadow-lg" style="background-color: #f7f9fb;">
+                <div class="card-header" style="background-color: #a3c9e2; color: #fff;">
+                    <h3 class="card-title mb-0">Film Details</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <h4 class="mb-3">Information</h4>
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <th>Id</th>
+                                    <td>{{ film.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Title</th>
+                                    <td>{{ film.titre }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Creation Date</th>
+                                    <td>{{ film.dateCreation ? film.dateCreation|date('Y-m-d') : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Genre</th>
+                                    <td>{{ film.genre }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ path('app_film_index') }}" class="btn" style="background-color: #ffcc80; color: #fff;">
+                            <i class="fas fa-arrow-left"></i> Back to List
+                        </a>
+                        <a href="{{ path('app_film_edit', {'id': film.id}) }}" class="btn" style="background-color: #ffab73; color: #fff;">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                {{ include('film/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

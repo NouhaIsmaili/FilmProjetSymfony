@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des projections{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0">Liste des projections</h1>
+        <a href="{{ path('app_projection_new') }}" class="btn" style="background-color: #ffab73; color: #fff;">
+            <i class="bi bi-plus-lg"></i> Ajouter une projection
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle shadow-sm">
+            <thead class="table-dark" style="background-color: #a3c9e2;">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Date de projection</th>
+                    <th scope="col">Salle</th>
+                    <th scope="col">Nombre de places</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for projection in projections %}
+                <tr>
+                    <td>{{ projection.id }}</td>
+                    <td>{{ projection.dateProjection ? projection.dateProjection|date('Y-m-d') : '' }}</td>
+                    <td>{{ projection.salle }}</td>
+                    <td>{{ projection.nbrPlaces }}</td>
+                    <td>
+                        <a href="{{ path('app_projection_show', {'id': projection.id}) }}" class="btn btn-sm" style="background-color: #ffcc80; color: #fff;">Afficher</a>
+                        <a href="{{ path('app_projection_edit', {'id': projection.id}) }}" class="btn btn-sm" style="background-color: #ffab73; color: #fff;">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" class="text-center text-muted">Aucune projection trouvée.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}

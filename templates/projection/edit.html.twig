@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Projection{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0">Edit Projection</h1>
+
+        <a href="{{ path('app_projection_index') }}" class="btn" style="background-color: #ffab73; color: #fff;">
+            <i class="bi bi-arrow-left"></i> Back to List
+        </a>
+    </div>
+
+    <div class="card shadow-sm p-4">
+        <h2 class="mb-4">Update Projection Information</h2>
+
+        {{ include('projection/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <div class="mt-4">
+            <h3>Danger Zone</h3>
+            <p>Once deleted, there is no way to recover this user. Proceed with caution.</p>
+            {{ include('projection/_delete_form.html.twig') }}
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
